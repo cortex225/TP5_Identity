@@ -8,8 +8,8 @@ namespace TP5_Identity.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public String Nom { get; set; }
+        public string Nom { get; set; }
 
-        public String Aderesse { get; set; }
+        public string Aderesse { get; set; }
     }
 }

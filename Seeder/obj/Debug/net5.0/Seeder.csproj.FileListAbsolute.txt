@@ -428,7 +428,6 @@ C:\Users\David\Source\Repos\TP5_Identity\Seeder\bin\Debug\net5.0\TP5_Identity.de
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\bin\Debug\net5.0\TP5_Identity.runtimeconfig.json
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\bin\Debug\net5.0\TP5_Identity.runtimeconfig.dev.json
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\bin\Debug\net5.0\bundleconfig.json
-C:\Users\David\Source\Repos\TP5_Identity\Seeder\bin\Debug\net5.0\TP5_Identity.StaticWebAssets.xml
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\bin\Debug\net5.0\TP5_Identity.exe
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\bin\Debug\net5.0\Seeder.exe
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\bin\Debug\net5.0\Seeder.deps.json
@@ -843,3 +842,4 @@ C:\Users\David\Source\Repos\TP5_Identity\Seeder\obj\Debug\net5.0\Seeder.dll
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\obj\Debug\net5.0\ref\Seeder.dll
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\obj\Debug\net5.0\Seeder.pdb
 C:\Users\David\Source\Repos\TP5_Identity\Seeder\obj\Debug\net5.0\Seeder.genruntimeconfig.cache
+C:\Users\David\source\repos\TP5_Identity\Seeder\bin\Debug\net5.0\TP5_Identity.StaticWebAssets.xml

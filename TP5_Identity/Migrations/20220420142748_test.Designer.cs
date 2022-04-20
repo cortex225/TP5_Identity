@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TP5_Identity.Data;
 
 namespace TP5_Identity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220420142748_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,21 +51,21 @@ namespace TP5_Identity.Migrations
                         new
                         {
                             Id = "32e55894137a1c163a81836e815d4ad0",
-                            ConcurrencyStamp = "289ba107-177b-419f-a70f-d98b2a5a6c3a",
+                            ConcurrencyStamp = "8dfe25a6-5160-42d6-a7a2-ee691246dfa0",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2d15691c418237479115a3618b0009ee8acb1a80",
-                            ConcurrencyStamp = "b521c2a4-532a-45a3-9ff1-47277d82bf58",
+                            ConcurrencyStamp = "a669fc33-8a4f-46ab-8bfb-d4f92e4f2e13",
                             Name = "employe",
                             NormalizedName = "EMPLOYE"
                         },
                         new
                         {
                             Id = "9faf91e5284627fc1e07d6884be54d4098f24fd6",
-                            ConcurrencyStamp = "c54197e7-dc4d-44a9-a244-299daf00b85d",
+                            ConcurrencyStamp = "4e071baa-edc6-411e-90c9-bd096545af09",
                             Name = "client",
                             NormalizedName = "CLIENT"
                         });
@@ -313,15 +315,15 @@ namespace TP5_Identity.Migrations
                         {
                             Id = "32e55894137a1c163a81836e815d4ad0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "19a807d4-d8c9-4e16-a974-1f7943f56d05",
+                            ConcurrencyStamp = "a09b1aa9-e20e-4e6e-afcd-75cd955bee54",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@admin.com",
                             NormalizedUserName = "administrateur",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE8DLAlcnBzByXNzlsN4/1FFyiGJrTViqxEETfptY5/6ii0x/1qkBdLeFoL7wT2axA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMpkDi/LHUBLuidnzbKqHXEYoNL/jYOYOxDTMxKRxVN+Okq5fJXV0lgb1T3l1tedcA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "318122ac-1af7-4bb4-8507-0a8ddc0e03e9",
+                            SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "administrateur"
                         },
@@ -329,14 +331,15 @@ namespace TP5_Identity.Migrations
                         {
                             Id = "2d15691c418237479115a3618b0009ee8acb1a80",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2661af7a-6beb-4578-9a65-37edf484c6d7",
+                            ConcurrencyStamp = "34cbf924-a518-45b1-b525-a42e1180dc7e",
                             Email = "emp@emp.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "emp@emp.com",
                             NormalizedUserName = "employe",
+                            PasswordHash = "AQAAAAEAACcQAAAAEARIrXrfqlKDe7oSj0VRjlPM6rwpUdYeuRDeP0DH1rmDqNOO0odOYbnUA9hGjNqicA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eac0318c-9ebb-46a5-a472-f3bb966e0601",
+                            SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "employe"
                         },
@@ -344,15 +347,15 @@ namespace TP5_Identity.Migrations
                         {
                             Id = "9faf91e5284627fc1e07d6884be54d4098f24fd6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d49493e9-7dc0-495f-8655-4c51df4869ba",
+                            ConcurrencyStamp = "f61282b3-b127-4eae-934d-bdc5b45e6d1d",
                             Email = "client@client.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "client@client.com",
                             NormalizedUserName = "client",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJH3F0dqjRoYFghY2n+6JQosyQ9bn6BFyDVaQtLkLA60XczU3FvqqQO1JnyS67+9OQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ8gtBkRLAZoZzDZSr/r3Qs6Z2w4KmIn6OTH5dGVu8uilx8MtOo0KfKkARIlhv82OA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9768bbff-cde8-416a-9fe1-c20970b6f8d3",
+                            SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "client"
                         });

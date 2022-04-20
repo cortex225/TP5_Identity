@@ -82,7 +82,7 @@ namespace TP5_Identity.Data
                 NormalizedEmail = "admin@admin.com",
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Jaimelaprog1!"),
-                SecurityStamp = string.Empty,
+                
                 
             },
             new ApplicationUser
@@ -93,8 +93,7 @@ namespace TP5_Identity.Data
                 Email = "emp@emp.com",
                 NormalizedEmail = "emp@emp.com",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Jaimelaprog1!"),
-                SecurityStamp = string.Empty
+                
             },
             new ApplicationUser
             {
@@ -105,7 +104,7 @@ namespace TP5_Identity.Data
                 NormalizedEmail = "client@client.com",
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Jaimelaprog1!"),
-                SecurityStamp = string.Empty
+                
 
             });
 
