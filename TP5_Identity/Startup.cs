@@ -29,25 +29,27 @@ namespace TP5_Identity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DbContext_MSSQL")));
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DbContext_MSSQL")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            //Ajout des services liés aux différents roles
-            services.AddAuthorization(options => {
-                options.AddPolicy("administrateur",
-                    builder => builder.RequireRole("admin"));
-                options.AddPolicy("employe",
-                    builder => builder.RequireRole("employe"));
-                options.AddPolicy("client",
-                    builder => builder.RequireRole("client"));
+           
+            //services.AddAuthorization(options => {
+            //    options.AddPolicy("administrateur",
+            //        builder => builder.RequireRole("admin"));
+            //    options.AddPolicy("employe",
+            //        builder => builder.RequireRole("employe"));
+            //    options.AddPolicy("client",
+            //        builder => builder.RequireRole("client"));
 
-            });
+
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

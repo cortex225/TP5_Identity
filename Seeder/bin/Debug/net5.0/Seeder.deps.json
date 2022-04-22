@@ -34,6 +34,7 @@
       "Seeder/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
+          "NBuilder": "6.1.0",
           "TP5_Identity": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -1255,6 +1256,20 @@
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0"
+        }
+      },
+      "NBuilder/6.1.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.6/FizzWare.NBuilder.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.6/FizzWare.NBuilder.dll": {}
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -4408,6 +4423,13 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "NBuilder/6.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NtDOtz/yc24t5yNivaGJQ1LHczoaYwNDjI04P7KEFDmbb2h6uL5OJZ5ExKx+wcypK2dBhRj2o1SiLAfj3kc8jw==",
+      "path": "nbuilder/6.1.0",
+      "hashPath": "nbuilder.6.1.0.nupkg.sha512"
     },
     "NETStandard.Library/1.6.1": {
       "type": "package",

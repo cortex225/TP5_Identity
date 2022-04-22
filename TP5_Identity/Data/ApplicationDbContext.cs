@@ -6,12 +6,16 @@ using TP5_Identity.Models;
 
 namespace TP5_Identity.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+        public DbSet<TP5_Identity.Models.Marque> Marques { get; set; }
+
+        public DbSet<TP5_Identity.Models.Modele> Modeles { get; set; }
+
         public DbSet<TP5_Identity.Models.Client> Clients { get; set; }
 
         public DbSet<TP5_Identity.Models.Employe> Employes { get; set; }
@@ -19,10 +23,6 @@ namespace TP5_Identity.Data
         public DbSet<TP5_Identity.Models.Location> Locations { get; set; }
 
         public DbSet<TP5_Identity.Models.Voiture> Voitures { get; set; }
-
-        public DbSet<TP5_Identity.Models.Marque> Marques { get; set; }
-
-        public DbSet<TP5_Identity.Models.Modele> Modeles { get; set; }
 
         public DbSet<TP5_Identity.Models.ApplicationUser> ApplicationUser { get; set; }
 
@@ -40,95 +40,73 @@ namespace TP5_Identity.Data
             modelBuilder.Entity<Client>().ToTable(nameof(Clients));
             modelBuilder.Entity<Employe>().ToTable(nameof(Employes));
 
-            const string USER_ADMIN_ID = "32e55894137a1c163a81836e815d4ad0";
-            const string USER_EMP_ID = "2d15691c418237479115a3618b0009ee8acb1a80";
-            const string USER_CLT_ID = "9faf91e5284627fc1e07d6884be54d4098f24fd6";
-            
 
-            // Créer le rôle
-            modelBuilder.Entity<IdentityRole>().HasData(
-                        new IdentityRole()
-                        {
-                            Id = USER_ADMIN_ID,
-                            Name = "admin",
-                            NormalizedName = "admin".ToUpper(),
 
-                        },
-                        new IdentityRole()
-                        {
-                            Id = USER_EMP_ID,
-                            Name = "employe",
-                            NormalizedName = "employe".ToUpper(),
 
-                        },
-                       new IdentityRole()
-                       {
-                           Id = USER_CLT_ID,
-                           Name = "client",
-                           NormalizedName = "client".ToUpper(),
+            // Créer les rôles
 
-                       }
-                );
+            IdentityRole admin = new IdentityRole { Name = "admin", NormalizedName = "admin".ToUpper() };
+            modelBuilder.Entity<IdentityRole>().HasData(admin);
+            IdentityRole employe = new IdentityRole { Name = "employe", NormalizedName = "employe".ToUpper() };
+            modelBuilder.Entity<IdentityRole>().HasData(employe);
+            IdentityRole client = new IdentityRole { Name = "client", NormalizedName = "client".ToUpper() };
+            modelBuilder.Entity<IdentityRole>().HasData(client);
 
-            var hasher = new PasswordHasher<ApplicationUser>();
-            modelBuilder.Entity<ApplicationUser>().HasData(
-
-            new ApplicationUser
+            //Création des différent comptes
+            //var password = new PasswordHasher<ApplicationUser>();
+            ApplicationUser UserAdmin = new ApplicationUser
             {
-                Id = USER_ADMIN_ID,
-                UserName = "administrateur",
-                NormalizedUserName = "administrateur",
+
+
                 Email = "admin@admin.com",
-                NormalizedEmail = "admin@admin.com",
-                EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Jaimelaprog1!"),
-                SecurityStamp = string.Empty,
-                
-            },
-            new ApplicationUser
+                UserName = "admin@admin.com",
+                NormalizedEmail = "admin@admin.com".ToUpper(),
+                NormalizedUserName = "admin@admin.com".ToUpper(),
+               
+            };
+            //var adminHasher = password.HashPassword(UserAdmin, "Jaimelaprog1!");
+            UserAdmin.PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==";
+            modelBuilder.Entity<ApplicationUser>().HasData(UserAdmin);
+
+
+            ApplicationUser UserEmploye = new ApplicationUser
             {
-                Id = USER_EMP_ID,
-                UserName = "employe",
-                NormalizedUserName = "employe",
-                Email = "emp@emp.com",
-                NormalizedEmail = "emp@emp.com",
-                EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Jaimelaprog1!"),
-                SecurityStamp = string.Empty
-            },
-            new ApplicationUser
+
+
+                Email = "employe@employe.com",
+                UserName = "employe@employe.com",
+                NormalizedEmail = "employe@employe.com".ToUpper(),
+                NormalizedUserName = "employe@employe.com".ToUpper()
+            };
+           // var employeHasher = password.HashPassword(UserEmploye, "Jaimelaprog1!");
+            UserEmploye.PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==";
+            modelBuilder.Entity<ApplicationUser>().HasData(UserEmploye);
+
+
+            ApplicationUser UserClient = new ApplicationUser
             {
-                Id = USER_CLT_ID,
-                UserName = "client",
-                NormalizedUserName = "client",
+
+
                 Email = "client@client.com",
-                NormalizedEmail = "client@client.com",
-                EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Jaimelaprog1!"),
-                SecurityStamp = string.Empty
+                UserName = "client@client.com",
+                NormalizedEmail = "client@client.com".ToUpper(),
+                NormalizedUserName = "client@client.com".ToUpper()
+            };
+            //var ClientHasher = password.HashPassword(UserClient, "Jaimelaprog1!");
+            UserClient.PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==";
+            modelBuilder.Entity<ApplicationUser>().HasData(UserClient);
 
-            });
 
+
+            //Connecte les rôles aux users pré-créés
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>() { RoleId = admin.Id, UserId = UserAdmin.Id },
+                new IdentityUserRole<string>() { RoleId = employe.Id, UserId = UserEmploye.Id },
+                new IdentityUserRole<string>() { RoleId = client.Id, UserId = UserClient.Id }
+                );
           
 
-            // Ajouter les rôles de l'utilisateur.
-            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
-            new IdentityUserRole<string>
-            {
-                RoleId = USER_ADMIN_ID,
-                UserId = USER_ADMIN_ID
-            },
-            new IdentityUserRole<string>
-            {
-                RoleId = USER_EMP_ID,
-                UserId = USER_EMP_ID
-            },
-            new IdentityUserRole<string>
-            {
-                RoleId = USER_CLT_ID,
-                UserId = USER_CLT_ID
-            }
-            );
+
         }
     }
 }

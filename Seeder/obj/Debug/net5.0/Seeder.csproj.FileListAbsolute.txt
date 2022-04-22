@@ -22,7 +22,6 @@ D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.de
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.runtimeconfig.json
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.runtimeconfig.dev.json
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\bundleconfig.json
-D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.StaticWebAssets.xml
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.exe
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Antiforgery.dll
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
@@ -420,3 +419,5 @@ D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\runtimes\win\li
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.dll
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.pdb
 D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\obj\Debug\net5.0\Seeder.csproj.CopyComplete
+D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\FizzWare.NBuilder.dll
+D:\CEGEP_Granby\session7\progWeb2\Tp\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.StaticWebAssets.xml
