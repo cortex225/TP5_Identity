@@ -10,7 +10,7 @@ using TP5_Identity.Data;
 namespace TP5_Identity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220422180548_new")]
+    [Migration("20220424195400_new")]
     partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,22 +50,22 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e04e0a74-2aec-4755-bf99-836fbbb488eb",
-                            ConcurrencyStamp = "03180689-2ac1-4d5e-8cc7-592500728abf",
+                            Id = "9253c653-c9b9-4041-94c2-a58d1a0eab34",
+                            ConcurrencyStamp = "32b6cbf0-725c-40bd-b8ae-ac0e55f590be",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "a50b1f0b-0d54-474c-8dff-a2a5466e29fe",
-                            ConcurrencyStamp = "02887615-dfd5-4cbb-8671-d2e33e2d205a",
+                            Id = "7d61c783-3b69-495d-8477-97d7d0dafcf8",
+                            ConcurrencyStamp = "cfa01dd6-6725-4e25-99be-c49a4ca97f0d",
                             Name = "employe",
                             NormalizedName = "EMPLOYE"
                         },
                         new
                         {
-                            Id = "2e160057-41c2-47f6-b26a-34f70fc95d2a",
-                            ConcurrencyStamp = "ada361f1-9c5a-42ff-96e4-0fa02a648f0a",
+                            Id = "02a2766a-54ce-4746-9eeb-93ace591213d",
+                            ConcurrencyStamp = "d46f8af1-84e1-4655-bb9e-efa787858454",
                             Name = "client",
                             NormalizedName = "CLIENT"
                         });
@@ -160,18 +160,18 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "abc47360-807e-412a-a585-d068a621cbfa",
-                            RoleId = "e04e0a74-2aec-4755-bf99-836fbbb488eb"
+                            UserId = "e2f3399d-6892-4ccb-b4d4-9d0152a6b9c2",
+                            RoleId = "9253c653-c9b9-4041-94c2-a58d1a0eab34"
                         },
                         new
                         {
-                            UserId = "12985353-da8b-4563-be68-a9696178017b",
-                            RoleId = "a50b1f0b-0d54-474c-8dff-a2a5466e29fe"
+                            UserId = "02878026-e170-4acd-9a2d-a743e28129f3",
+                            RoleId = "7d61c783-3b69-495d-8477-97d7d0dafcf8"
                         },
                         new
                         {
-                            UserId = "9bd270e1-f1dd-49cc-96c3-646637f96749",
-                            RoleId = "2e160057-41c2-47f6-b26a-34f70fc95d2a"
+                            UserId = "6e64d31e-db01-40fc-95c5-a789ee48adad",
+                            RoleId = "02a2766a-54ce-4746-9eeb-93ace591213d"
                         });
                 });
 
@@ -313,51 +313,51 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "abc47360-807e-412a-a585-d068a621cbfa",
+                            Id = "e2f3399d-6892-4ccb-b4d4-9d0152a6b9c2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "985986a1-3c26-405e-9fdd-57f36c1b1a8f",
+                            ConcurrencyStamp = "45586041-1c1d-4032-a18a-acb795a32129",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKno1d+WREiL7PitUHIE19IurVc6RiaYXXDbJ/SVWYD97rImca22Q9+kED/3YHjMTw==",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "409a2bd7-f5c3-408d-9767-a0e64b5f7130",
+                            SecurityStamp = "8df526fe-f417-4cc2-8399-24a70e9654a8",
                             TwoFactorEnabled = false,
-                            UserName = "admin"
+                            UserName = "admin@admin.com"
                         },
                         new
                         {
-                            Id = "12985353-da8b-4563-be68-a9696178017b",
+                            Id = "02878026-e170-4acd-9a2d-a743e28129f3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8eb53cef-419f-45f1-95d4-88d9bd180f7b",
+                            ConcurrencyStamp = "aaa5426c-18b6-401e-95ca-5d3342cf133f",
                             Email = "employe@employe.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "EMPLOYE@EMPLOYE.COM",
-                            NormalizedUserName = "EMPLOYE",
-                            PasswordHash = "AQAAAAEAACcQAAAAENdHFia9rvU8DfXIGm0ENq74qBU/3xwukAKtXW2rgcCxWQEzG8xboH/Vv6Rw+i5Fxg==",
+                            NormalizedUserName = "EMPLOYE@EMPLOYE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "03f54a77-ea66-41b3-bd26-6f0abdfb4d14",
+                            SecurityStamp = "15990d0f-c19c-4c98-8a69-7a3a7b45b382",
                             TwoFactorEnabled = false,
-                            UserName = "employe"
+                            UserName = "employe@employe.com"
                         },
                         new
                         {
-                            Id = "9bd270e1-f1dd-49cc-96c3-646637f96749",
+                            Id = "6e64d31e-db01-40fc-95c5-a789ee48adad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "48543a39-4c20-455f-a3a3-a475290811a4",
+                            ConcurrencyStamp = "e79785e7-00d4-43bb-b313-2fcdc1775b0c",
                             Email = "client@client.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "CLIENT@CLIENT.COM",
-                            NormalizedUserName = "CLIENT",
-                            PasswordHash = "AQAAAAEAACcQAAAAENdHFia9rvU8DfXIGm0ENq74qBU/3xwukAKtXW2rgcCxWQEzG8xboH/Vv6Rw+i5Fxg==",
+                            NormalizedUserName = "CLIENT@CLIENT.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fef17a76-5f0f-405b-8dbe-096872a878c1",
+                            SecurityStamp = "06d1af64-0d1b-4f4f-bd52-e2b8181b3b72",
                             TwoFactorEnabled = false,
-                            UserName = "client"
+                            UserName = "client@client.com"
                         });
                 });
 
@@ -371,7 +371,7 @@ namespace TP5_Identity.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ClientsId")
+                    b.Property<string>("ClientId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateLocation")
@@ -385,7 +385,7 @@ namespace TP5_Identity.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientsId");
+                    b.HasIndex("ClientId1");
 
                     b.HasIndex("VoitureId");
 
@@ -534,9 +534,9 @@ namespace TP5_Identity.Migrations
 
             modelBuilder.Entity("TP5_Identity.Models.Location", b =>
                 {
-                    b.HasOne("TP5_Identity.Models.Client", "Clients")
+                    b.HasOne("TP5_Identity.Models.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("ClientsId");
+                        .HasForeignKey("ClientId1");
 
                     b.HasOne("TP5_Identity.Models.Voiture", "Voiture")
                         .WithMany("Locations")
@@ -544,7 +544,7 @@ namespace TP5_Identity.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Clients");
+                    b.Navigation("Client");
 
                     b.Navigation("Voiture");
                 });

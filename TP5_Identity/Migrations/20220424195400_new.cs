@@ -277,15 +277,15 @@ namespace TP5_Identity.Migrations
                     DateLocation = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DureeEnJours = table.Column<int>(type: "int", nullable: false),
                     ClientId = table.Column<int>(type: "int", nullable: false),
-                    ClientsId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClientId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     VoitureId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Locations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Locations_Clients_ClientsId",
-                        column: x => x.ClientsId,
+                        name: "FK_Locations_Clients_ClientId1",
+                        column: x => x.ClientId1,
                         principalTable: "Clients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -312,9 +312,9 @@ namespace TP5_Identity.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "e04e0a74-2aec-4755-bf99-836fbbb488eb", "03180689-2ac1-4d5e-8cc7-592500728abf", "admin", "ADMIN" },
-                    { "a50b1f0b-0d54-474c-8dff-a2a5466e29fe", "02887615-dfd5-4cbb-8671-d2e33e2d205a", "employe", "EMPLOYE" },
-                    { "2e160057-41c2-47f6-b26a-34f70fc95d2a", "ada361f1-9c5a-42ff-96e4-0fa02a648f0a", "client", "CLIENT" }
+                    { "9253c653-c9b9-4041-94c2-a58d1a0eab34", "32b6cbf0-725c-40bd-b8ae-ac0e55f590be", "admin", "ADMIN" },
+                    { "7d61c783-3b69-495d-8477-97d7d0dafcf8", "cfa01dd6-6725-4e25-99be-c49a4ca97f0d", "employe", "EMPLOYE" },
+                    { "02a2766a-54ce-4746-9eeb-93ace591213d", "d46f8af1-84e1-4655-bb9e-efa787858454", "client", "CLIENT" }
                 });
 
             migrationBuilder.InsertData(
@@ -322,25 +322,25 @@ namespace TP5_Identity.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Aderesse", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Nom", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "abc47360-807e-412a-a585-d068a621cbfa", 0, null, "985986a1-3c26-405e-9fdd-57f36c1b1a8f", "admin@admin.com", false, false, null, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEKno1d+WREiL7PitUHIE19IurVc6RiaYXXDbJ/SVWYD97rImca22Q9+kED/3YHjMTw==", null, false, "409a2bd7-f5c3-408d-9767-a0e64b5f7130", false, "admin" },
-                    { "12985353-da8b-4563-be68-a9696178017b", 0, null, "8eb53cef-419f-45f1-95d4-88d9bd180f7b", "employe@employe.com", false, false, null, null, "EMPLOYE@EMPLOYE.COM", "EMPLOYE", "AQAAAAEAACcQAAAAENdHFia9rvU8DfXIGm0ENq74qBU/3xwukAKtXW2rgcCxWQEzG8xboH/Vv6Rw+i5Fxg==", null, false, "03f54a77-ea66-41b3-bd26-6f0abdfb4d14", false, "employe" },
-                    { "9bd270e1-f1dd-49cc-96c3-646637f96749", 0, null, "48543a39-4c20-455f-a3a3-a475290811a4", "client@client.com", false, false, null, null, "CLIENT@CLIENT.COM", "CLIENT", "AQAAAAEAACcQAAAAENdHFia9rvU8DfXIGm0ENq74qBU/3xwukAKtXW2rgcCxWQEzG8xboH/Vv6Rw+i5Fxg==", null, false, "fef17a76-5f0f-405b-8dbe-096872a878c1", false, "client" }
+                    { "e2f3399d-6892-4ccb-b4d4-9d0152a6b9c2", 0, null, "45586041-1c1d-4032-a18a-acb795a32129", "admin@admin.com", false, false, null, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "8df526fe-f417-4cc2-8399-24a70e9654a8", false, "admin@admin.com" },
+                    { "02878026-e170-4acd-9a2d-a743e28129f3", 0, null, "aaa5426c-18b6-401e-95ca-5d3342cf133f", "employe@employe.com", false, false, null, null, "EMPLOYE@EMPLOYE.COM", "EMPLOYE@EMPLOYE.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "15990d0f-c19c-4c98-8a69-7a3a7b45b382", false, "employe@employe.com" },
+                    { "6e64d31e-db01-40fc-95c5-a789ee48adad", 0, null, "e79785e7-00d4-43bb-b313-2fcdc1775b0c", "client@client.com", false, false, null, null, "CLIENT@CLIENT.COM", "CLIENT@CLIENT.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "06d1af64-0d1b-4f4f-bd52-e2b8181b3b72", false, "client@client.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "e04e0a74-2aec-4755-bf99-836fbbb488eb", "abc47360-807e-412a-a585-d068a621cbfa" });
+                values: new object[] { "9253c653-c9b9-4041-94c2-a58d1a0eab34", "e2f3399d-6892-4ccb-b4d4-9d0152a6b9c2" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "a50b1f0b-0d54-474c-8dff-a2a5466e29fe", "12985353-da8b-4563-be68-a9696178017b" });
+                values: new object[] { "7d61c783-3b69-495d-8477-97d7d0dafcf8", "02878026-e170-4acd-9a2d-a743e28129f3" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "2e160057-41c2-47f6-b26a-34f70fc95d2a", "9bd270e1-f1dd-49cc-96c3-646637f96749" });
+                values: new object[] { "02a2766a-54ce-4746-9eeb-93ace591213d", "6e64d31e-db01-40fc-95c5-a789ee48adad" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -387,9 +387,9 @@ namespace TP5_Identity.Migrations
                 column: "AbonnementId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Locations_ClientsId",
+                name: "IX_Locations_ClientId1",
                 table: "Locations",
-                column: "ClientsId");
+                column: "ClientId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Locations_VoitureId",

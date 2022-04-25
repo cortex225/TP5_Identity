@@ -1,16 +1,11 @@
-﻿@model IEnumerable<TP5_Identity.Models.Voiture>
+﻿@model IEnumerable<VoituresVM>
 
 
 
-@{
-    ViewData["Title"] = "Index";
-}
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h1>Liste des voitures</h1>
+
 <table class="table">
     <thead>
         <tr>
@@ -46,12 +41,7 @@
                     @Html.DisplayFor(modelItem => item.Modele.Nom)
                 </td>
 
-                
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
-                </td>
+         
             </tr>
         }
     </tbody>

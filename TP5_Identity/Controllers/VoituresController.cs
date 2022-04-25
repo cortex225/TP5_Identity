@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TP5_Identity.Data;
 using TP5_Identity.Models;
+using TP5_Identity.Models.ViewModels;
 
 namespace TP5_Identity.Controllers
 {
@@ -22,141 +23,28 @@ namespace TP5_Identity.Controllers
 
         // GET: Voitures
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var applicationDbContext = _context.Voitures.Include(v => v.Modele);
-            return View(await applicationDbContext.ToListAsync());
-        }
-
-        // GET: Voitures/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var voiture = await _context.Voitures
+            var vm = _context.Voitures
                 .Include(v => v.Modele)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (voiture == null)
-            {
-                return NotFound();
-            }
-
-            return View(voiture);
-        }
-
-        // GET: Voitures/Create
-        public IActionResult Create()
-        {
-            ViewData["ModeleId"] = new SelectList(_context.Modeles, "Id", "Id");
-            return View();
-        }
-
-        // POST: Voitures/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Annee,Couleur,PrixJournalier,ModeleId")] Voiture voiture)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(voiture);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ModeleId"] = new SelectList(_context.Modeles, "Id", "Id", voiture.ModeleId);
-            return View(voiture);
-        }
-
-        // GET: Voitures/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var voiture = await _context.Voitures.FindAsync(id);
-            if (voiture == null)
-            {
-                return NotFound();
-            }
-            ViewData["ModeleId"] = new SelectList(_context.Modeles, "Id", "Id", voiture.ModeleId);
-            return View(voiture);
-        }
-
-        // POST: Voitures/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Annee,Couleur,PrixJournalier,ModeleId")] Voiture voiture)
-        {
-            if (id != voiture.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                .OrderBy(v => v.Annee)
+                .Select(voitures => new VoituresVM()
                 {
-                    _context.Update(voiture);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!VoitureExists(voiture.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ModeleId"] = new SelectList(_context.Modeles, "Id", "Id", voiture.ModeleId);
-            return View(voiture);
+                    Id = voitures.Id,
+                    Annee=voitures.Annee,
+                    Couleur=voitures.Couleur,
+                    Locations=voitures.Locations,
+                    Modele=voitures.Modele, 
+                    ModeleId=voitures.ModeleId,
+                    PrixJournalier=voitures.PrixJournalier
+
+                })
+
+                .ToList();
+
+            return View(vm);
         }
 
-        // GET: Voitures/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var voiture = await _context.Voitures
-                .Include(v => v.Modele)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (voiture == null)
-            {
-                return NotFound();
-            }
-
-            return View(voiture);
-        }
-
-        // POST: Voitures/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var voiture = await _context.Voitures.FindAsync(id);
-            _context.Voitures.Remove(voiture);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool VoitureExists(int id)
-        {
-            return _context.Voitures.Any(e => e.Id == id);
-        }
     }
 }

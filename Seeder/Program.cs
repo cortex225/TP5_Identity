@@ -86,6 +86,22 @@ namespace Seeder
               .Build();
             context.Voitures.AddRange(voitures);
             context.SaveChanges();
+
+
+
+            //List<Location> locations = new List<Location>()
+            //{
+            //    new Location() {
+            //        Id = 1,
+            //        DateLocation = new DateTime(2015, 12, 31),
+            //        DureeEnJours = 10,
+            //        ClientId=context.ApplicationUser.Take( ),
+            //        VoitureId=2
+            //    }
+
+            //};
+
+          
         }
 
     }

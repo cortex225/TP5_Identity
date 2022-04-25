@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TP5_Identity.Models
 {
@@ -16,7 +13,7 @@ namespace TP5_Identity.Models
 
         public int ClientId { get; set; }
 
-        public Client Clients { get; set; }
+        public Client Client { get; set; }
 
         public int VoitureId { get; set; }
 

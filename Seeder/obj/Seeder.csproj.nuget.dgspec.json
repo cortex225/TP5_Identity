@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\Seeder\\Seeder.csproj": {}
+    "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\Seeder\\Seeder.csproj": {}
   },
   "projects": {
-    "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\Seeder\\Seeder.csproj": {
+    "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\Seeder\\Seeder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\Seeder\\Seeder.csproj",
+        "projectUniqueName": "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\Seeder\\Seeder.csproj",
         "projectName": "Seeder",
-        "projectPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\Seeder\\Seeder.csproj",
+        "projectPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\Seeder\\Seeder.csproj",
         "packagesPath": "C:\\Users\\jgoua\\.nuget\\packages\\",
-        "outputPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\Seeder\\obj\\",
+        "outputPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\Seeder\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jgoua\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\TP5_Identity\\TP5_Identity.csproj": {
-                "projectPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\TP5_Identity\\TP5_Identity.csproj"
+              "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\TP5_Identity\\TP5_Identity.csproj": {
+                "projectPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\TP5_Identity\\TP5_Identity.csproj"
               }
             }
           }
@@ -72,14 +72,14 @@
         }
       }
     },
-    "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\TP5_Identity\\TP5_Identity.csproj": {
+    "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\TP5_Identity\\TP5_Identity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\TP5_Identity\\TP5_Identity.csproj",
+        "projectUniqueName": "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\TP5_Identity\\TP5_Identity.csproj",
         "projectName": "TP5_Identity",
-        "projectPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\TP5_Identity\\TP5_Identity.csproj",
+        "projectPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\TP5_Identity\\TP5_Identity.csproj",
         "packagesPath": "C:\\Users\\jgoua\\.nuget\\packages\\",
-        "outputPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\Tp\\TP5\\TP5_Identity\\obj\\",
+        "outputPath": "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\TP5_Identity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jgoua\\AppData\\Roaming\\NuGet\\NuGet.Config",

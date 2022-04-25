@@ -3,11 +3,10 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
+<h1>Liste des locations</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Créer une nouvelle location</a>
 </p>
 <table class="table">
     <thead>
@@ -19,35 +18,41 @@
                 @Html.DisplayNameFor(model => model.DureeEnJours)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClientId)
+                @Html.DisplayNameFor(model => model.Client.Nom)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Voiture)
+                @Html.DisplayNameFor(model => model.Voiture.Modele)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture.Modele.Marque)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DureeEnJours)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Clients.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Voiture.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DureeEnJours)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voiture.Modele.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voiture.Modele.Marque.Nom)
+                </td>
+                <td>
+                    
+                    <a  asp-action="Delete" asp-route-id="@item.Id"> <img src="../Images/trash.png" width="50" height="50"/></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

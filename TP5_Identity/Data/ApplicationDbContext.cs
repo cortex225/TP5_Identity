@@ -62,7 +62,8 @@ namespace TP5_Identity.Data
                 UserName = "admin@admin.com",
                 NormalizedEmail = "admin@admin.com".ToUpper(),
                 NormalizedUserName = "admin@admin.com".ToUpper(),
-               
+
+
             };
             //var adminHasher = password.HashPassword(UserAdmin, "Jaimelaprog1!");
             UserAdmin.PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==";
@@ -78,7 +79,7 @@ namespace TP5_Identity.Data
                 NormalizedEmail = "employe@employe.com".ToUpper(),
                 NormalizedUserName = "employe@employe.com".ToUpper()
             };
-           // var employeHasher = password.HashPassword(UserEmploye, "Jaimelaprog1!");
+            // var employeHasher = password.HashPassword(UserEmploye, "Jaimelaprog1!");
             UserEmploye.PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==";
             modelBuilder.Entity<ApplicationUser>().HasData(UserEmploye);
 
@@ -104,7 +105,7 @@ namespace TP5_Identity.Data
                 new IdentityUserRole<string>() { RoleId = employe.Id, UserId = UserEmploye.Id },
                 new IdentityUserRole<string>() { RoleId = client.Id, UserId = UserClient.Id }
                 );
-          
+
 
 
         }
