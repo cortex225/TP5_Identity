@@ -48,22 +48,22 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9253c653-c9b9-4041-94c2-a58d1a0eab34",
-                            ConcurrencyStamp = "32b6cbf0-725c-40bd-b8ae-ac0e55f590be",
+                            Id = "2490bd07-bac4-4600-b02e-1aaff571361a",
+                            ConcurrencyStamp = "ab68b776-be98-4b8f-81ba-6c19059d4973",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "7d61c783-3b69-495d-8477-97d7d0dafcf8",
-                            ConcurrencyStamp = "cfa01dd6-6725-4e25-99be-c49a4ca97f0d",
+                            Id = "9b34609e-9134-4283-8c6a-b41baaeec593",
+                            ConcurrencyStamp = "9328cd45-9f83-487a-86a6-f1ba34530faa",
                             Name = "employe",
                             NormalizedName = "EMPLOYE"
                         },
                         new
                         {
-                            Id = "02a2766a-54ce-4746-9eeb-93ace591213d",
-                            ConcurrencyStamp = "d46f8af1-84e1-4655-bb9e-efa787858454",
+                            Id = "31575f68-aa14-4c8d-b8d7-170eb9f71110",
+                            ConcurrencyStamp = "368551db-8c71-4723-ba67-cf98f5e81b51",
                             Name = "client",
                             NormalizedName = "CLIENT"
                         });
@@ -158,18 +158,18 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "e2f3399d-6892-4ccb-b4d4-9d0152a6b9c2",
-                            RoleId = "9253c653-c9b9-4041-94c2-a58d1a0eab34"
+                            UserId = "46c75536-5859-42ba-9cc5-44b6a9f9889f",
+                            RoleId = "2490bd07-bac4-4600-b02e-1aaff571361a"
                         },
                         new
                         {
-                            UserId = "02878026-e170-4acd-9a2d-a743e28129f3",
-                            RoleId = "7d61c783-3b69-495d-8477-97d7d0dafcf8"
+                            UserId = "875077c9-cae0-4e99-9663-02e2eee3655c",
+                            RoleId = "9b34609e-9134-4283-8c6a-b41baaeec593"
                         },
                         new
                         {
-                            UserId = "6e64d31e-db01-40fc-95c5-a789ee48adad",
-                            RoleId = "02a2766a-54ce-4746-9eeb-93ace591213d"
+                            UserId = "98f00524-250c-43d3-9eb2-46f0663d00f2",
+                            RoleId = "31575f68-aa14-4c8d-b8d7-170eb9f71110"
                         });
                 });
 
@@ -311,9 +311,9 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e2f3399d-6892-4ccb-b4d4-9d0152a6b9c2",
+                            Id = "46c75536-5859-42ba-9cc5-44b6a9f9889f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "45586041-1c1d-4032-a18a-acb795a32129",
+                            ConcurrencyStamp = "41dd63a9-74a2-44b9-a9aa-ee43edab17aa",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
@@ -321,41 +321,9 @@ namespace TP5_Identity.Migrations
                             NormalizedUserName = "ADMIN@ADMIN.COM",
                             PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8df526fe-f417-4cc2-8399-24a70e9654a8",
+                            SecurityStamp = "e73b6fdf-e67f-4623-8caa-0194af6d3cb4",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
-                        },
-                        new
-                        {
-                            Id = "02878026-e170-4acd-9a2d-a743e28129f3",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "aaa5426c-18b6-401e-95ca-5d3342cf133f",
-                            Email = "employe@employe.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "EMPLOYE@EMPLOYE.COM",
-                            NormalizedUserName = "EMPLOYE@EMPLOYE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "15990d0f-c19c-4c98-8a69-7a3a7b45b382",
-                            TwoFactorEnabled = false,
-                            UserName = "employe@employe.com"
-                        },
-                        new
-                        {
-                            Id = "6e64d31e-db01-40fc-95c5-a789ee48adad",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "e79785e7-00d4-43bb-b313-2fcdc1775b0c",
-                            Email = "client@client.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "CLIENT@CLIENT.COM",
-                            NormalizedUserName = "CLIENT@CLIENT.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "06d1af64-0d1b-4f4f-bd52-e2b8181b3b72",
-                            TwoFactorEnabled = false,
-                            UserName = "client@client.com"
                         });
                 });
 
@@ -366,10 +334,7 @@ namespace TP5_Identity.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ClientId1")
+                    b.Property<string>("ClientId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateLocation")
@@ -383,7 +348,7 @@ namespace TP5_Identity.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId1");
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("VoitureId");
 
@@ -464,6 +429,27 @@ namespace TP5_Identity.Migrations
                     b.HasIndex("AbonnementId");
 
                     b.ToTable("Clients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "98f00524-250c-43d3-9eb2-46f0663d00f2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "27fa018b-b381-40bc-aa6d-8ba6640fbabe",
+                            Email = "client@client.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Nom = "client",
+                            NormalizedEmail = "CLIENT@CLIENT.COM",
+                            NormalizedUserName = "CLIENT@CLIENT.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "52683b78-8f46-4161-89cd-523dfe3d6e6d",
+                            TwoFactorEnabled = false,
+                            UserName = "client@client.com",
+                            AbonnementId = 1,
+                            Adresse = ""
+                        });
                 });
 
             modelBuilder.Entity("TP5_Identity.Models.Employe", b =>
@@ -477,6 +463,26 @@ namespace TP5_Identity.Migrations
                         .HasColumnType("int");
 
                     b.ToTable("Employes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "875077c9-cae0-4e99-9663-02e2eee3655c",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e1cf534f-544c-4f94-983d-078eb5872c07",
+                            Email = "employe@employe.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "EMPLOYE@EMPLOYE.COM",
+                            NormalizedUserName = "EMPLOYE@EMPLOYE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e566f763-8d77-46f6-a5bb-0d36304cf763",
+                            TwoFactorEnabled = false,
+                            UserName = "employe@employe.com",
+                            DateEmbauche = new DateTime(2022, 4, 27, 16, 28, 2, 754, DateTimeKind.Local).AddTicks(6682),
+                            NoEmploye = 1
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -534,7 +540,7 @@ namespace TP5_Identity.Migrations
                 {
                     b.HasOne("TP5_Identity.Models.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("ClientId1");
+                        .HasForeignKey("ClientId");
 
                     b.HasOne("TP5_Identity.Models.Voiture", "Voiture")
                         .WithMany("Locations")

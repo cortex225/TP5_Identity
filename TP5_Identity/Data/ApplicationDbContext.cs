@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using TP5_Identity.Data.Configuration;
 using TP5_Identity.Models;
 
@@ -41,6 +42,7 @@ namespace TP5_Identity.Data
             modelBuilder.Entity<Employe>().ToTable(nameof(Employes));
 
 
+            
 
 
             // Créer les rôles
@@ -70,10 +72,11 @@ namespace TP5_Identity.Data
             modelBuilder.Entity<ApplicationUser>().HasData(UserAdmin);
 
 
-            ApplicationUser UserEmploye = new ApplicationUser
+            Employe UserEmploye = new Employe
             {
 
-
+                NoEmploye=1,
+                DateEmbauche= System.DateTime.Now,
                 Email = "employe@employe.com",
                 UserName = "employe@employe.com",
                 NormalizedEmail = "employe@employe.com".ToUpper(),
@@ -81,21 +84,24 @@ namespace TP5_Identity.Data
             };
             // var employeHasher = password.HashPassword(UserEmploye, "Jaimelaprog1!");
             UserEmploye.PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==";
-            modelBuilder.Entity<ApplicationUser>().HasData(UserEmploye);
+            modelBuilder.Entity<Employe>().HasData(UserEmploye);
 
 
-            ApplicationUser UserClient = new ApplicationUser
+            Client UserClient = new Client
             {
 
-
+                Nom="client",
+                Adresse="",
+                AbonnementId = 1,
                 Email = "client@client.com",
                 UserName = "client@client.com",
                 NormalizedEmail = "client@client.com".ToUpper(),
-                NormalizedUserName = "client@client.com".ToUpper()
+                NormalizedUserName = "client@client.com".ToUpper(),
+                
             };
             //var ClientHasher = password.HashPassword(UserClient, "Jaimelaprog1!");
             UserClient.PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==";
-            modelBuilder.Entity<ApplicationUser>().HasData(UserClient);
+            modelBuilder.Entity<Client>().HasData(UserClient);
 
 
 

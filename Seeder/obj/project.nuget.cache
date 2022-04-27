@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tw8sV/P7Qz0j6GpbDPw+319pgoncqgXw4yUkQrUf9T3PAG6IN8U1Hw7BUkF5lByxsZQB9wBqYOXVcJ/rJMIHWA==",
+  "dgSpecHash": "wIXc54EQtVm+TDfsp0IQwV2pVEjQTwXLsOcKY5FzrlBGvk7u7HCKyq0ZW/PB/DLxzop9FCB/yvZnCBtcU+YPVw==",
   "success": true,
   "projectFilePath": "D:\\CEGEP_Granby\\session7\\progWeb2\\TP5\\Seeder\\Seeder.csproj",
   "expectedPackageFiles": [
@@ -43,7 +43,7 @@
     "C:\\Users\\jgoua\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.16\\microsoft.extensions.identity.core.5.0.16.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\microsoft.extensions.identity.stores\\5.0.16\\microsoft.extensions.identity.stores.5.0.16.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
-    "C:\\Users\\jgoua\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\jgoua\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\microsoft.identity.client\\4.14.0\\microsoft.identity.client.4.14.0.nupkg.sha512",
@@ -85,7 +85,7 @@
     "C:\\Users\\jgoua\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
-    "C:\\Users\\jgoua\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
+    "C:\\Users\\jgoua\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\jgoua\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",

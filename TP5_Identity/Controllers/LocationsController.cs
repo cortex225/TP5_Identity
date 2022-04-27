@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Threading.Tasks;
 using TP5_Identity.Data;
@@ -11,17 +14,27 @@ namespace TP5_Identity.Controllers
     public class LocationsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public LocationsController(ApplicationDbContext context)
+
+        public LocationsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+          
         }
 
         // GET: Locations
-        public async Task<IActionResult> Index()
+       // [Authorize(Roles = RoleNames.Admin + "," + RoleNames.Employe)]
+        public IActionResult Index()
         {
-            var applicationDbContext = _context.Locations.Include(l => l.Voiture).Include(l => l.Client);
-            return View(await applicationDbContext.ToListAsync());
+            
+            var applicationDbContext = _context.Locations
+                .Include(l => l.Voiture)
+                .Include(l => l.Voiture.Modele)
+                .Include(l => l.Voiture.Modele.Marque)
+                .Include(l => l.Client);
+            return View( applicationDbContext);
         }
 
 

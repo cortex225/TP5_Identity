@@ -276,16 +276,15 @@ namespace TP5_Identity.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DateLocation = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DureeEnJours = table.Column<int>(type: "int", nullable: false),
-                    ClientId = table.Column<int>(type: "int", nullable: false),
-                    ClientId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     VoitureId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Locations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Locations_Clients_ClientId1",
-                        column: x => x.ClientId1,
+                        name: "FK_Locations_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -312,9 +311,9 @@ namespace TP5_Identity.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "9253c653-c9b9-4041-94c2-a58d1a0eab34", "32b6cbf0-725c-40bd-b8ae-ac0e55f590be", "admin", "ADMIN" },
-                    { "7d61c783-3b69-495d-8477-97d7d0dafcf8", "cfa01dd6-6725-4e25-99be-c49a4ca97f0d", "employe", "EMPLOYE" },
-                    { "02a2766a-54ce-4746-9eeb-93ace591213d", "d46f8af1-84e1-4655-bb9e-efa787858454", "client", "CLIENT" }
+                    { "2490bd07-bac4-4600-b02e-1aaff571361a", "ab68b776-be98-4b8f-81ba-6c19059d4973", "admin", "ADMIN" },
+                    { "9b34609e-9134-4283-8c6a-b41baaeec593", "9328cd45-9f83-487a-86a6-f1ba34530faa", "employe", "EMPLOYE" },
+                    { "31575f68-aa14-4c8d-b8d7-170eb9f71110", "368551db-8c71-4723-ba67-cf98f5e81b51", "client", "CLIENT" }
                 });
 
             migrationBuilder.InsertData(
@@ -322,25 +321,30 @@ namespace TP5_Identity.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Aderesse", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Nom", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "e2f3399d-6892-4ccb-b4d4-9d0152a6b9c2", 0, null, "45586041-1c1d-4032-a18a-acb795a32129", "admin@admin.com", false, false, null, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "8df526fe-f417-4cc2-8399-24a70e9654a8", false, "admin@admin.com" },
-                    { "02878026-e170-4acd-9a2d-a743e28129f3", 0, null, "aaa5426c-18b6-401e-95ca-5d3342cf133f", "employe@employe.com", false, false, null, null, "EMPLOYE@EMPLOYE.COM", "EMPLOYE@EMPLOYE.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "15990d0f-c19c-4c98-8a69-7a3a7b45b382", false, "employe@employe.com" },
-                    { "6e64d31e-db01-40fc-95c5-a789ee48adad", 0, null, "e79785e7-00d4-43bb-b313-2fcdc1775b0c", "client@client.com", false, false, null, null, "CLIENT@CLIENT.COM", "CLIENT@CLIENT.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "06d1af64-0d1b-4f4f-bd52-e2b8181b3b72", false, "client@client.com" }
+                    { "46c75536-5859-42ba-9cc5-44b6a9f9889f", 0, null, "41dd63a9-74a2-44b9-a9aa-ee43edab17aa", "admin@admin.com", false, false, null, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "e73b6fdf-e67f-4623-8caa-0194af6d3cb4", false, "admin@admin.com" },
+                    { "98f00524-250c-43d3-9eb2-46f0663d00f2", 0, null, "27fa018b-b381-40bc-aa6d-8ba6640fbabe", "client@client.com", false, false, null, "client", "CLIENT@CLIENT.COM", "CLIENT@CLIENT.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "52683b78-8f46-4161-89cd-523dfe3d6e6d", false, "client@client.com" },
+                    { "875077c9-cae0-4e99-9663-02e2eee3655c", 0, null, "e1cf534f-544c-4f94-983d-078eb5872c07", "employe@employe.com", false, false, null, null, "EMPLOYE@EMPLOYE.COM", "EMPLOYE@EMPLOYE.COM", "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==", null, false, "e566f763-8d77-46f6-a5bb-0d36304cf763", false, "employe@employe.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "9253c653-c9b9-4041-94c2-a58d1a0eab34", "e2f3399d-6892-4ccb-b4d4-9d0152a6b9c2" });
+                values: new object[,]
+                {
+                    { "2490bd07-bac4-4600-b02e-1aaff571361a", "46c75536-5859-42ba-9cc5-44b6a9f9889f" },
+                    { "31575f68-aa14-4c8d-b8d7-170eb9f71110", "98f00524-250c-43d3-9eb2-46f0663d00f2" },
+                    { "9b34609e-9134-4283-8c6a-b41baaeec593", "875077c9-cae0-4e99-9663-02e2eee3655c" }
+                });
 
             migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "7d61c783-3b69-495d-8477-97d7d0dafcf8", "02878026-e170-4acd-9a2d-a743e28129f3" });
+                table: "Clients",
+                columns: new[] { "Id", "AbonnementId", "Adresse" },
+                values: new object[] { "98f00524-250c-43d3-9eb2-46f0663d00f2", 1, "" });
 
             migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "02a2766a-54ce-4746-9eeb-93ace591213d", "6e64d31e-db01-40fc-95c5-a789ee48adad" });
+                table: "Employes",
+                columns: new[] { "Id", "DateEmbauche", "NoEmploye" },
+                values: new object[] { "875077c9-cae0-4e99-9663-02e2eee3655c", new DateTime(2022, 4, 27, 16, 28, 2, 754, DateTimeKind.Local).AddTicks(6682), 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -387,9 +391,9 @@ namespace TP5_Identity.Migrations
                 column: "AbonnementId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Locations_ClientId1",
+                name: "IX_Locations_ClientId",
                 table: "Locations",
-                column: "ClientId1");
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Locations_VoitureId",

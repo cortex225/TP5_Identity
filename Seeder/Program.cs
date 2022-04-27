@@ -87,21 +87,49 @@ namespace Seeder
             context.Voitures.AddRange(voitures);
             context.SaveChanges();
 
+            List<Abonnement> abonnements = context.Abonnements.ToList();
+            List<Client> clients= context.Clients.ToList();
+            var clientId = clients[0].Id;
 
 
-            //List<Location> locations = new List<Location>()
-            //{
-            //    new Location() {
-            //        Id = 1,
-            //        DateLocation = new DateTime(2015, 12, 31),
-            //        DureeEnJours = 10,
-            //        ClientId=context.ApplicationUser.Take( ),
-            //        VoitureId=2
-            //    }
+      
+            List<Location> locations = new List<Location>()
+            {
 
-            //};
+                new Location() {
+                    Id = 0,
+                    DateLocation = new DateTime(2017, 12, 31),
+                    DureeEnJours = 15,
+                    ClientId=clientId,
+                    Voiture =Pick<Voiture>.RandomItemFrom(voitures),
+                    
 
-          
+                },
+                new Location() {
+                    Id = 0,
+                    DateLocation =  DateTime.Now,
+                    DureeEnJours = 20,
+                    ClientId=clientId,
+                    Voiture=Pick<Voiture>.RandomItemFrom(voitures),
+                    
+
+                },
+                new Location() {
+                    Id = 0,
+                    DateLocation = new DateTime(2022, 12, 31),
+                    DureeEnJours = 25,
+                    ClientId=clientId,
+                    Voiture=Pick<Voiture>.RandomItemFrom(voitures),
+                   
+
+                }
+
+
+            };
+            context.Locations.AddRangeAsync(locations);
+            context.SaveChanges();
+
+
         }
 
     }

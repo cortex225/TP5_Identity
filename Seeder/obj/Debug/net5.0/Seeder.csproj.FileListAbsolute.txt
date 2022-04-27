@@ -429,7 +429,6 @@ D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.deps.
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.runtimeconfig.json
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.runtimeconfig.dev.json
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\bundleconfig.json
-D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.StaticWebAssets.xml
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.exe
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\Seeder.exe
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\Seeder.deps.json
@@ -537,7 +536,6 @@ D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.Ext
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.Extensions.Http.dll
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.dll
-D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Abstractions.dll
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Configuration.dll
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Console.dll
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Debug.dll
@@ -844,3 +842,4 @@ D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\obj\Debug\net5.0\Seeder.dll
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\obj\Debug\net5.0\ref\Seeder.dll
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\obj\Debug\net5.0\Seeder.pdb
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\obj\Debug\net5.0\Seeder.genruntimeconfig.cache
+D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
