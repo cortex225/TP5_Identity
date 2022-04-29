@@ -6,7 +6,7 @@ namespace TP5_Identity.Models
     {
        
 
-        public string Adresse { get; set; }
+  
 
         public int AbonnementId { get; set; }
 

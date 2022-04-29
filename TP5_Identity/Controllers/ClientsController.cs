@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,47 +35,75 @@ namespace TP5_Identity.Controllers
 
 
         // GET: ClientsController
+        [HttpGet,Authorize(Roles = "admin,client,employe")]
         public ActionResult Index()
         {
-            return View();
+            var applicationDbContext = _context.Clients
+                  .Include(l => l.Abonnement);
+            return View(applicationDbContext);
         }
 
 
 
-        // GET: ClientsController1/Create
+        // GET: ClientsController/Creer
         [HttpGet, AllowAnonymous]
         public ActionResult Creer()
         {
             ClientsVM vm = new ClientsVM();
+            vm.Abonnements = _context.Abonnements.ToList();
             return View(vm);
         }
 
-        // POST: ClientsController/Create
+        // POST: ClientsController/Creer
         [HttpPost, AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Creer(ClientsVM vm)
         {
             if (ModelState.IsValid)
             {
+                var password = new PasswordHasher<ApplicationUser>();
                 var userCheck = await _userManager.FindByEmailAsync(vm.Courriel);
+                vm.Abonnements = _context.Abonnements.ToList();
                 if (userCheck == null)
                 {
-                    var user = new ApplicationUser
+                    var user = new Client
                     {
                         Id=vm.Id,
+                        Nom=vm.Nom,
+                        Adresse=vm.Adresse,
                         UserName = vm.Courriel,
                         NormalizedUserName = vm.Courriel.ToUpper(),
+                        NormalizedEmail=vm.Courriel.ToUpper(),
                         Email = vm.Courriel,
                         PhoneNumber = vm.Telephone,
                         EmailConfirmed = true,
                         PhoneNumberConfirmed = true,
-                       // PasswordHash=vm.Password.ToHashSet(),
+                        PasswordHash=password.HashPassword(userCheck,vm.Password),
+                        AbonnementId=vm.AbonnementId
+                        
                     };
                     var result = await _userManager.CreateAsync(user, vm.Password);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Login");
+                        await _userManager.AddToRoleAsync(user, "client");
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        user.AbonnementId = vm.AbonnementId;
+                        user.Adresse = vm.Adresse;
+                        user.Id = vm.Id;
+                        user.Nom = vm.Nom;
+                        user.UserName = vm.Courriel;
+                        user.NormalizedUserName = vm.Courriel.ToUpper();
+                        user.NormalizedEmail = vm.Courriel.ToUpper();
+                        user.Email = vm.Courriel;
+                        user.PhoneNumber = vm.Telephone;
+                        user.EmailConfirmed = true;
+                        user.PhoneNumberConfirmed = true;
+                        user.PasswordHash = password.HashPassword(userCheck, vm.Password);
+
+                        return RedirectToAction("Index","Home" );
                     }
+                    
+                  
                     else
                     {
                         if (result.Errors.Count() > 0)
@@ -89,7 +118,7 @@ namespace TP5_Identity.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("message", "Email already exists.");
+                    ModelState.AddModelError("message", "Cet utilisateur existe déjà.");
                     return View(vm);
                 }
             }

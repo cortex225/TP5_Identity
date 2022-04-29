@@ -48,22 +48,22 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0add2909-a8b8-4e51-88f9-2a70e45ea656",
-                            ConcurrencyStamp = "1ae5f9bc-3279-4746-bb2b-06ecc51f9152",
+                            Id = "34dddcad-e7a6-4c2d-ae20-5f9cab63d6d8",
+                            ConcurrencyStamp = "1cc9404c-fb4e-45b1-bda7-50df6a1d593c",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "68f3e84c-1ca0-48c9-b6f7-95ddfd26e5f9",
-                            ConcurrencyStamp = "568fcc55-7c31-447f-bd11-5cea168b686c",
+                            Id = "1dabe670-c1e1-48f7-91af-7101b9da5239",
+                            ConcurrencyStamp = "bcf17e69-d424-4867-a750-cd8e8cefd8b2",
                             Name = "employe",
                             NormalizedName = "EMPLOYE"
                         },
                         new
                         {
-                            Id = "1d2e8332-8c8c-42d6-9f6d-6454bf7bcd2b",
-                            ConcurrencyStamp = "2caba6dc-2cd2-4f07-bf27-b14bf59d6187",
+                            Id = "377c13ba-3f90-48ad-bb51-5c19a8a666d7",
+                            ConcurrencyStamp = "df23de59-58c9-47d2-9e2d-ce0673e62f4b",
                             Name = "client",
                             NormalizedName = "CLIENT"
                         });
@@ -158,18 +158,18 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "d365336b-51d6-432c-988e-696f092b9168",
-                            RoleId = "0add2909-a8b8-4e51-88f9-2a70e45ea656"
+                            UserId = "3bfe7e3d-9a21-4ed7-b14d-991643154dc6",
+                            RoleId = "34dddcad-e7a6-4c2d-ae20-5f9cab63d6d8"
                         },
                         new
                         {
-                            UserId = "cf33c019-2e5d-40c0-b95e-880723a50dbf",
-                            RoleId = "68f3e84c-1ca0-48c9-b6f7-95ddfd26e5f9"
+                            UserId = "67d5cab1-785e-4636-8790-0814f102f423",
+                            RoleId = "1dabe670-c1e1-48f7-91af-7101b9da5239"
                         },
                         new
                         {
-                            UserId = "8be5060e-710e-469b-8876-4161b1216141",
-                            RoleId = "1d2e8332-8c8c-42d6-9f6d-6454bf7bcd2b"
+                            UserId = "b3a36c86-fc08-4ee4-a2da-f58ec826503a",
+                            RoleId = "377c13ba-3f90-48ad-bb51-5c19a8a666d7"
                         });
                 });
 
@@ -246,7 +246,7 @@ namespace TP5_Identity.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Aderesse")
+                    b.Property<string>("Adresse")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -311,9 +311,9 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d365336b-51d6-432c-988e-696f092b9168",
+                            Id = "3bfe7e3d-9a21-4ed7-b14d-991643154dc6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9de63cb8-61bd-470c-aedd-63dcb8ce479f",
+                            ConcurrencyStamp = "08c1d9fe-efb1-4c4d-8c10-32ab0d8a84ef",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
@@ -321,7 +321,7 @@ namespace TP5_Identity.Migrations
                             NormalizedUserName = "ADMIN@ADMIN.COM",
                             PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9cf287f6-80c4-4190-9cc7-49968bf2d05c",
+                            SecurityStamp = "90c46a95-c1e3-4a1a-9cce-d0f7df39f407",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         });
@@ -423,9 +423,6 @@ namespace TP5_Identity.Migrations
                     b.Property<int>("AbonnementId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Adresse")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasIndex("AbonnementId");
 
                     b.ToTable("Clients");
@@ -433,9 +430,9 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8be5060e-710e-469b-8876-4161b1216141",
+                            Id = "b3a36c86-fc08-4ee4-a2da-f58ec826503a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a6bf7812-ba55-4f85-a711-dc64570bf056",
+                            ConcurrencyStamp = "c5983229-4fe3-4773-9ce3-b762f1482db2",
                             Email = "client@client.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
@@ -444,11 +441,10 @@ namespace TP5_Identity.Migrations
                             NormalizedUserName = "CLIENT@CLIENT.COM",
                             PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ce193c96-a9e5-4b9d-ae1a-1eb315aa0b4e",
+                            SecurityStamp = "b79ef194-c530-4f79-803d-f9f0915089ad",
                             TwoFactorEnabled = false,
                             UserName = "client@client.com",
-                            AbonnementId = 1,
-                            Adresse = ""
+                            AbonnementId = 1
                         });
                 });
 
@@ -467,9 +463,9 @@ namespace TP5_Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cf33c019-2e5d-40c0-b95e-880723a50dbf",
+                            Id = "67d5cab1-785e-4636-8790-0814f102f423",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8abec1eb-2f18-4387-8936-0f1acce55aab",
+                            ConcurrencyStamp = "b65d21ee-f0e4-42d5-a411-01afe2a062e4",
                             Email = "employe@employe.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
@@ -477,10 +473,10 @@ namespace TP5_Identity.Migrations
                             NormalizedUserName = "EMPLOYE@EMPLOYE.COM",
                             PasswordHash = "AQAAAAEAACcQAAAAEP5A0+Sh49GqZJZev/DKqD7yieTvqVejrmGV0mV6PL5KNos4tLJnJL1tHceX7HezGA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4178a3e6-fc82-400c-9e2f-385830c858c9",
+                            SecurityStamp = "b8d629a9-de34-4750-ab85-6a6a5c82f593",
                             TwoFactorEnabled = false,
                             UserName = "employe@employe.com",
-                            DateEmbauche = new DateTime(2022, 4, 27, 21, 30, 32, 187, DateTimeKind.Local).AddTicks(2899),
+                            DateEmbauche = new DateTime(2022, 4, 29, 18, 16, 55, 960, DateTimeKind.Local).AddTicks(3805),
                             NoEmploye = 1
                         });
                 });

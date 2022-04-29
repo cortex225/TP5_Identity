@@ -21,7 +21,7 @@ namespace TP5_Identity.Models.ViewModels
 
         public int AbonnementId { get; set; }
 
-        public Abonnement Abonnement { get; set; }
+        public List<Abonnement> Abonnements { get; set; }
 
 
     }
