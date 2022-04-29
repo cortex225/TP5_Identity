@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TP5_Identity.Data;
 using TP5_Identity.Models;
+using TP5_Identity.Models.ViewModels;
 
 namespace TP5_Identity.Controllers
 {
@@ -17,52 +20,87 @@ namespace TP5_Identity.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
 
 
-        public LocationsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+
+
+
+        public LocationsController(
+            ApplicationDbContext context,
+            UserManager<ApplicationUser> userManager
+
+            )
         {
             _context = context;
             _userManager = userManager;
-          
+         
+
         }
 
         // GET: Locations
-       // [Authorize(Roles = RoleNames.Admin + "," + RoleNames.Employe)]
+        [Authorize(Roles = "admin,client,employe")]
         public IActionResult Index()
         {
-            
+
             var applicationDbContext = _context.Locations
-                .Include(l => l.Voiture)
-                .Include(l => l.Voiture.Modele)
-                .Include(l => l.Voiture.Modele.Marque)
+                .Include(l => l.Voitures)
+                .Include(l => l.Voitures.Modele)
+                .Include(l => l.Voitures.Modele.Marque)
                 .Include(l => l.Client);
-            return View( applicationDbContext);
+            return View(applicationDbContext);
         }
 
 
         // GET: Locations/Create
+        [Authorize(Roles = "admin,client,employe")]
         public IActionResult Create()
         {
-            ViewData["VoitureId"] = new SelectList(_context.Voitures, "Id", "Id");
-            return View();
+            LocationsVM vm = new LocationsVM();
+            vm.Client = _context.Clients.ToList();
+            vm.Voitures = _context.Voitures.ToList();
+            vm.Marques = _context.Marques.ToList();
+            vm.Modeles = _context.Modeles.ToList();
+           
+            
+
+
+            return View(vm);
         }
 
-        // POST: Locations/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "admin,client,employe")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DateLocation,DureeEnJours,ClientId,VoitureId")] Location location)
+        public async Task<IActionResult> Create(LocationsVM vm)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(location);
+                if (ModelState.IsValid)
+            {
+                    Location nouvelleLocation = new Location();
+                    nouvelleLocation.ClientId = vm.ClientId;
+                    nouvelleLocation.Id = vm.Id;
+                    nouvelleLocation.VoitureId = vm.VoitureId;
+                    nouvelleLocation.DateLocation = vm.DateLocation;
+                    nouvelleLocation.DureeEnJours = vm.DureeEnJours;
+                  
+                   
+
+
+                    _context.Locations.Add(nouvelleLocation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["VoitureId"] = new SelectList(_context.Voitures, "Id", "Id", location.VoitureId);
-            return View(location);
+                vm.Client = _context.Clients.ToList();
+                vm.Voitures = _context.Voitures.ToList();
+             
+
+                return View(vm);
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
         }
 
-      
+
         // GET: Locations/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -72,7 +110,7 @@ namespace TP5_Identity.Controllers
             }
 
             var location = await _context.Locations
-                .Include(l => l.Voiture)
+                .Include(l => l.Voitures)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (location == null)
             {

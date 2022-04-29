@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TP5_Identity.Data;
 using TP5_Identity.Models;
 
@@ -39,17 +33,7 @@ namespace TP5_Identity
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-           
-            //services.AddAuthorization(options => {
-            //    options.AddPolicy("administrateur",
-            //        builder => builder.RequireRole("admin"));
-            //    options.AddPolicy("employe",
-            //        builder => builder.RequireRole("employe"));
-            //    options.AddPolicy("client",
-            //        builder => builder.RequireRole("client"));
 
-
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

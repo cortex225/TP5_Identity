@@ -7,6 +7,15 @@ namespace TP5_Identity.Models.ViewModels
 {
     public class ClientsVM
     {
+        public string Id { get; set; }
+
+        public string Nom { get; set; }
+
+        public string Courriel { get; set; }
+
+        public string Password { get; set; }
+
+        public string Telephone { get; set; }
 
         public string Adresse { get; set; }
 

@@ -1,8 +1,5 @@
-﻿@model TP5_Identity.Models.Location
+﻿@model LocationsVM
 
-@{
-    ViewData["Title"] = "Create";
-}
 
 <h1>Create</h1>
 
@@ -23,14 +20,21 @@
                 <span asp-validation-for="DureeEnJours" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ClientId" class="control-label"></label>
-                <input asp-for="ClientId" class="form-control" />
+                <label asp-for="Client" class="control-label"></label>
+
+                @Html.DropDownListFor(c => c.ClientId, new SelectList(Model.Client, "Id", "Nom"), "choisir un client", new { @class = "form-control" })
+
                 <span asp-validation-for="ClientId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="VoitureId" class="control-label"></label>
-                <select asp-for="VoitureId" class ="form-control" asp-items="ViewBag.VoitureId"></select>
+                @Html.DropDownListFor(c => c.VoitureId, new SelectList(Model.Voitures, "Id", nameof(Voiture.VoituresDispo)), "choisir une voiture", new { @class = "form-control" })
+             
+                <span asp-validation-for="VoitureId" class="text-danger"></span>
             </div>
+          
+        
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

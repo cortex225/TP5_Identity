@@ -101,7 +101,7 @@ namespace Seeder
                     DateLocation = new DateTime(2017, 12, 31),
                     DureeEnJours = 15,
                     ClientId=clientId,
-                    Voiture =Pick<Voiture>.RandomItemFrom(voitures),
+                    Voitures =Pick<Voiture>.RandomItemFrom(voitures),
                     
 
                 },
@@ -110,7 +110,7 @@ namespace Seeder
                     DateLocation =  DateTime.Now,
                     DureeEnJours = 20,
                     ClientId=clientId,
-                    Voiture=Pick<Voiture>.RandomItemFrom(voitures),
+                    Voitures=Pick<Voiture>.RandomItemFrom(voitures),
                     
 
                 },
@@ -119,7 +119,7 @@ namespace Seeder
                     DateLocation = new DateTime(2022, 12, 31),
                     DureeEnJours = 25,
                     ClientId=clientId,
-                    Voiture=Pick<Voiture>.RandomItemFrom(voitures),
+                    Voitures=Pick<Voiture>.RandomItemFrom(voitures),
                    
 
                 }

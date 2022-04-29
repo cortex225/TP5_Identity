@@ -843,3 +843,4 @@ D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\obj\Debug\net5.0\ref\Seeder.dll
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\obj\Debug\net5.0\Seeder.pdb
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\obj\Debug\net5.0\Seeder.genruntimeconfig.cache
 D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\CEGEP_Granby\session7\progWeb2\TP5\Seeder\bin\Debug\net5.0\TP5_Identity.StaticWebAssets.xml
