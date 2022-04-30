@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using TP5_Identity.Data;
-using TP5_Identity.Models;
 using TP5_Identity.Models.ViewModels;
 
 namespace TP5_Identity.Controllers
@@ -31,12 +26,12 @@ namespace TP5_Identity.Controllers
                 .Select(voitures => new VoituresVM()
                 {
                     Id = voitures.Id,
-                    Annee=voitures.Annee,
-                    Couleur=voitures.Couleur,
-                    Locations=voitures.Locations,
-                    Modele=voitures.Modele, 
-                    ModeleId=voitures.ModeleId,
-                    PrixJournalier=voitures.PrixJournalier
+                    Annee = voitures.Annee,
+                    Couleur = voitures.Couleur,
+                    Locations = voitures.Locations,
+                    Modele = voitures.Modele,
+                    ModeleId = voitures.ModeleId,
+                    PrixJournalier = voitures.PrixJournalier
 
                 })
 

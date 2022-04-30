@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TP5_Identity.Data;
@@ -31,7 +28,7 @@ namespace TP5_Identity.Controllers
         {
             _context = context;
             _userManager = userManager;
-         
+
 
         }
 
@@ -58,8 +55,8 @@ namespace TP5_Identity.Controllers
             vm.Voitures = _context.Voitures.ToList();
             vm.Marques = _context.Marques.ToList();
             vm.Modeles = _context.Modeles.ToList();
-           
-            
+
+
 
 
             return View(vm);
@@ -73,24 +70,24 @@ namespace TP5_Identity.Controllers
             try
             {
                 if (ModelState.IsValid)
-            {
+                {
                     Location nouvelleLocation = new Location();
                     nouvelleLocation.ClientId = vm.ClientId;
                     nouvelleLocation.Id = vm.Id;
                     nouvelleLocation.VoitureId = vm.VoitureId;
                     nouvelleLocation.DateLocation = vm.DateLocation;
                     nouvelleLocation.DureeEnJours = vm.DureeEnJours;
-                  
-                   
+
+
 
 
                     _context.Locations.Add(nouvelleLocation);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
                 vm.Client = _context.Clients.ToList();
                 vm.Voitures = _context.Voitures.ToList();
-             
+
 
                 return View(vm);
             }

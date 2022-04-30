@@ -1,15 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TP5_Identity.Data;
 using TP5_Identity.Models;
-using TP5_Identity.ViewModels;
 using TP5_Identity.ViewModels.Comptes;
 
 namespace TP5_Identity.Controllers
@@ -31,13 +27,13 @@ namespace TP5_Identity.Controllers
             _logger = logger;
             _context = context;
         }
-       
+
 
         [AllowAnonymous]
         [Route("Compte/Connecter")]
         public IActionResult Connecter()
         {
-            
+
             return View();
         }
 
@@ -57,7 +53,7 @@ namespace TP5_Identity.Controllers
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
             //trouver l'utilisateur qui tente de se connecter
             var user = await _userManager.FindByEmailAsync(model.Email);
-           
+
             if (result.Succeeded)
             {
                 _logger.LogInformation("L'utilisateur est connecté.");
@@ -147,7 +143,7 @@ namespace TP5_Identity.Controllers
 
         }
 
-      
+
 
 
     }

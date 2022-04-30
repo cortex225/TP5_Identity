@@ -35,7 +35,7 @@ namespace TP5_Identity.Controllers
 
 
         // GET: ClientsController
-        [HttpGet,Authorize(Roles = "admin,client,employe")]
+        [HttpGet, Authorize(Roles = "admin,client,employe")]
         public ActionResult Index()
         {
             var applicationDbContext = _context.Clients
@@ -47,7 +47,8 @@ namespace TP5_Identity.Controllers
 
         // GET: ClientsController/Creer
         [HttpGet, AllowAnonymous]
-        public ActionResult Creer()
+        [Route("Clients/Creer")]
+        public ActionResult Create()
         {
             ClientsVM vm = new ClientsVM();
             vm.Abonnements = _context.Abonnements.ToList();
@@ -56,8 +57,9 @@ namespace TP5_Identity.Controllers
 
         // POST: ClientsController/Creer
         [HttpPost, AllowAnonymous]
+        [Route("Clients/Creer")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Creer(ClientsVM vm)
+        public async Task<IActionResult> Create(ClientsVM vm)
         {
             if (ModelState.IsValid)
             {
@@ -68,19 +70,19 @@ namespace TP5_Identity.Controllers
                 {
                     var user = new Client
                     {
-                        Id=vm.Id,
-                        Nom=vm.Nom,
-                        Adresse=vm.Adresse,
+
+                        Nom = vm.Nom,
+                        Adresse = vm.Adresse,
                         UserName = vm.Courriel,
                         NormalizedUserName = vm.Courriel.ToUpper(),
-                        NormalizedEmail=vm.Courriel.ToUpper(),
+                        NormalizedEmail = vm.Courriel.ToUpper(),
                         Email = vm.Courriel,
                         PhoneNumber = vm.Telephone,
                         EmailConfirmed = true,
                         PhoneNumberConfirmed = true,
-                        PasswordHash=password.HashPassword(userCheck,vm.Password),
-                        AbonnementId=vm.AbonnementId
-                        
+                        PasswordHash = password.HashPassword(userCheck, vm.Password),
+                        AbonnementId = vm.AbonnementId
+
                     };
                     var result = await _userManager.CreateAsync(user, vm.Password);
                     if (result.Succeeded)
@@ -89,7 +91,7 @@ namespace TP5_Identity.Controllers
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         user.AbonnementId = vm.AbonnementId;
                         user.Adresse = vm.Adresse;
-                        user.Id = vm.Id;
+
                         user.Nom = vm.Nom;
                         user.UserName = vm.Courriel;
                         user.NormalizedUserName = vm.Courriel.ToUpper();
@@ -100,10 +102,10 @@ namespace TP5_Identity.Controllers
                         user.PhoneNumberConfirmed = true;
                         user.PasswordHash = password.HashPassword(userCheck, vm.Password);
 
-                        return RedirectToAction("Index","Home" );
+                        return RedirectToAction("Index", "Home");
                     }
-                    
-                  
+
+
                     else
                     {
                         if (result.Errors.Count() > 0)

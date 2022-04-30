@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TP5_Identity.Models
 {
@@ -23,7 +21,7 @@ namespace TP5_Identity.Models
         [DisplayName("Nom du Client")]
         public Client Client { get; set; }
 
-        
+
         public int VoitureId { get; set; }
         [DisplayName("Voitures disponibles")]
         public Voiture Voitures { get; set; }

@@ -88,11 +88,11 @@ namespace Seeder
             context.SaveChanges();
 
             List<Abonnement> abonnements = context.Abonnements.ToList();
-            List<Client> clients= context.Clients.ToList();
+            List<Client> clients = context.Clients.ToList();
             var clientId = clients[0].Id;
 
 
-      
+
             List<Location> locations = new List<Location>()
             {
 
@@ -102,7 +102,7 @@ namespace Seeder
                     DureeEnJours = 15,
                     ClientId=clientId,
                     Voitures =Pick<Voiture>.RandomItemFrom(voitures),
-                    
+
 
                 },
                 new Location() {
@@ -111,7 +111,7 @@ namespace Seeder
                     DureeEnJours = 20,
                     ClientId=clientId,
                     Voitures=Pick<Voiture>.RandomItemFrom(voitures),
-                    
+
 
                 },
                 new Location() {
@@ -120,7 +120,7 @@ namespace Seeder
                     DureeEnJours = 25,
                     ClientId=clientId,
                     Voitures=Pick<Voiture>.RandomItemFrom(voitures),
-                   
+
 
                 }
 

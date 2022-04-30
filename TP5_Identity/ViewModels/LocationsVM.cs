@@ -10,19 +10,23 @@ namespace TP5_Identity.Models.ViewModels
         public int Id { get; set; }
 
         [DisplayName("Date de location")]
+        [Required(ErrorMessage = "La date de location est requise.")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateLocation { get; set; }
 
         [DisplayName("Durée en jours")]
+        [Required(ErrorMessage = "La durée en jour est requise.")]
+        [MinLength(1, ErrorMessage = "La durée en jour doit être minimum de 1 jour.")]
         public int DureeEnJours { get; set; }
 
-        public string ClientId { get; set; }
-
+        [Required(ErrorMessage = "Vous devez choisir un client.")]
         [DisplayName("Nom du Client")]
+        public string ClientId { get; set; }
         public List<Client> Client { get; set; }
 
         [DisplayName("Voitures disponibles")]
+        [Required(ErrorMessage = "Vous devez choisir une voiture.")]
         public int VoitureId { get; set; }
 
         public List<Voiture> Voitures { get; set; }

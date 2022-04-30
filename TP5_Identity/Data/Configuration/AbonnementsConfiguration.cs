@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TP5_Identity.Models;
 
 namespace TP5_Identity.Data.Configuration
@@ -13,7 +9,7 @@ namespace TP5_Identity.Data.Configuration
         public void Configure(EntityTypeBuilder<Abonnement> builder)
         {
             builder.HasData(
-                new Abonnement() 
+                new Abonnement()
                 {
                     Id = 1,
                     Type = "Regulier",
@@ -37,6 +33,6 @@ namespace TP5_Identity.Data.Configuration
             );
         }
 
-      
+
     }
 }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TP5_Identity.Models.ViewModels
 {
     public class VoituresVM
     {
-    
+
 
         public int Id { get; set; }
 
@@ -25,9 +21,9 @@ namespace TP5_Identity.Models.ViewModels
         [DisplayName("Modèle")]
         public Modele Modele { get; set; }
 
-         
+
         public List<Location> Locations { get; set; }
 
-     
+
     }
 }

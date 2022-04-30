@@ -1,5 +1,3 @@
-using System;
-
 namespace TP5_Identity.Models
 {
     public class ErrorViewModel
