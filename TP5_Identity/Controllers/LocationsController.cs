@@ -100,6 +100,7 @@ namespace TP5_Identity.Controllers
 
 
         // GET: Locations/Delete/5
+        [Authorize(Roles = "admin,client,employe")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -109,6 +110,9 @@ namespace TP5_Identity.Controllers
 
             var location = await _context.Locations
                 .Include(l => l.Voitures)
+                .Include(l => l.Voitures.Modele)
+                .Include(l => l.Voitures.Modele.Marque)
+                .Include(l => l.Client)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (location == null)
             {
@@ -119,6 +123,7 @@ namespace TP5_Identity.Controllers
         }
 
         // POST: Locations/Delete/5
+        [Authorize(Roles = "admin,client,employe")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

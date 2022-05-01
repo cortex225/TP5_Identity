@@ -14,7 +14,7 @@ namespace TP5_Identity.Controllers
 {
     public class ClientsController : Controller
     {
-
+       
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -35,32 +35,53 @@ namespace TP5_Identity.Controllers
 
 
         // GET: ClientsController
-        [HttpGet, Authorize(Roles = "admin,client,employe")]
+        [HttpGet, Authorize(Roles = "admin,employe")]
         public ActionResult Index()
         {
+            bool isRole = User.IsInRole("client");
             var applicationDbContext = _context.Clients
                   .Include(l => l.Abonnement)
                   .ToList();
-            return View(applicationDbContext);
+            if (isRole == false)
+
+            {
+                return View(applicationDbContext);
+            }
+            else
+            {
+                return RedirectToAction("Connecter", "Comptes");
+            }
+            
         }
 
 
 
         // GET: ClientsController/Creer
-        [HttpGet, AllowAnonymous]
+        [HttpGet,AllowAnonymous]
+        [Authorize(Roles ="admin,employe")]
         [Route("Clients/Creer")]
         public ActionResult Create()
         {
             ClientsVM vm = new ClientsVM();
             vm.Abonnements = _context.Abonnements.ToList();
-            return View(vm);
+            //Tout le monte peut créer un nouveau client sauf le client lui même
+            bool isRole = User.IsInRole("client");
+            if (isRole==false)
+
+            {
+                return View(vm);
+                
+                }else
+                return RedirectToAction("Connecter", "Comptes");
+
         }
 
         // POST: ClientsController/Creer
-        [HttpPost, AllowAnonymous]
-        [Route("Clients/Creer")]
+        [HttpPost,AllowAnonymous]
+        [Route("Clients/{Creer}")]
+        [Authorize(Roles = "admin,employe")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ClientsVM vm)
+        public async Task<IActionResult> Enregistrer(ClientsVM vm)
         {
             if (ModelState.IsValid)
             {
@@ -86,13 +107,14 @@ namespace TP5_Identity.Controllers
 
                     };
                     var result = await _userManager.CreateAsync(user, vm.Password);
+                   
+
                     if (result.Succeeded)
                     {
                         await _userManager.AddToRoleAsync(user, "client");
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         user.AbonnementId = vm.AbonnementId;
                         user.Adresse = vm.Adresse;
-
                         user.Nom = vm.Nom;
                         user.UserName = vm.Courriel;
                         user.NormalizedUserName = vm.Courriel.ToUpper();
@@ -103,7 +125,14 @@ namespace TP5_Identity.Controllers
                         user.PhoneNumberConfirmed = true;
                         user.PasswordHash = password.HashPassword(userCheck, vm.Password);
 
-                        return RedirectToAction("Index", "Clients");
+
+                        if (User.IsInRole("admin")||User.IsInRole("employe"))
+                        {
+                            return RedirectToAction("Index", "Clients");
+
+                        }
+                        else 
+                            return RedirectToAction("Index", "Home");
                     }
 
 
@@ -131,8 +160,8 @@ namespace TP5_Identity.Controllers
 
 
         // GET: Clients/Delete/5
-        [Authorize(Roles = "admin,employe,client")]
-        public async Task<IActionResult> Delete(int? id)
+        [Authorize(Roles = "admin,employe")]
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -142,7 +171,7 @@ namespace TP5_Identity.Controllers
             var client = await _context.Clients
                 .Include(c => c.Abonnement)
                 
-                .FirstOrDefaultAsync(m => m.Id == id.ToString());
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {
                 return NotFound();
@@ -153,9 +182,9 @@ namespace TP5_Identity.Controllers
 
         // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = "administrateur,employe,client")]
+        [Authorize(Roles = "administrateur,employe")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var client = await _context.Clients.FindAsync(id);
             _context.Clients.Remove(client);

@@ -46,9 +46,10 @@ namespace TP5_Identity.Controllers
 
 
         // GET: EmployesController/Creer
-        [HttpGet, AllowAnonymous]
-        [Route("Employes/Creer")]
-        public ActionResult Create()
+        [HttpGet]
+        [Route("{Controller}/{Action}")]
+        [HttpGet, Authorize(Roles = "admin")]
+        public ActionResult Enregistrer()
         {
             EmployesVM vm = new EmployesVM();
            
@@ -57,8 +58,9 @@ namespace TP5_Identity.Controllers
         }
 
         // POST: EmployesController/Creer
-        [HttpPost, AllowAnonymous]
-        [Route("Employes/Creer")]
+        [HttpPost]
+        [Route("{Controller}/{Action}")]
+        [HttpGet, Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(EmployesVM vm)
         {
@@ -92,7 +94,6 @@ namespace TP5_Identity.Controllers
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         
                         user.Adresse = vm.Courriel;
-
                         user.Nom = vm.Nom;
                         user.UserName = vm.Courriel;
                         user.NormalizedUserName = vm.Courriel.ToUpper();
@@ -131,8 +132,8 @@ namespace TP5_Identity.Controllers
 
 
         // GET: Employes/Delete/5
-        [Authorize(Roles = "admin,employe,Employe")]
-        public async Task<IActionResult> Delete(int? id)
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -142,7 +143,7 @@ namespace TP5_Identity.Controllers
             var Employe = await _context.Employes
               
 
-                .FirstOrDefaultAsync(m => m.Id == id.ToString());
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (Employe == null)
             {
                 return NotFound();
@@ -153,9 +154,9 @@ namespace TP5_Identity.Controllers
 
         // POST: Employes/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = "administrateur,employe,Employe")]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var Employe = await _context.Employes.FindAsync(id);
             _context.Employes.Remove(Employe);
