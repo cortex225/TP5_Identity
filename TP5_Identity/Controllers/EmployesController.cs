@@ -1,83 +1,167 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+using System.Threading.Tasks;
+using TP5_Identity.Data;
+using TP5_Identity.Models;
+using TP5_Identity.Models.ViewModels;
 
 namespace TP5_Identity.Controllers
 {
     public class EmployesController : Controller
     {
-        // GET: EmployesController1
+
+
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ILogger<EmployesVM> _logger;
+        private readonly ApplicationDbContext _context;
+
+        public EmployesController(SignInManager<ApplicationUser> signInManager,
+            ILogger<EmployesVM> logger,
+            UserManager<ApplicationUser> userManager, ApplicationDbContext context)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+            _context = context;
+        }
+
+
+
+
+        // GET: EmployesController
+        [HttpGet, Authorize(Roles = "admin")]
         public ActionResult Index()
         {
-            return View();
+            var applicationDbContext = _context.Employes.ToList();
+                  
+            return View(applicationDbContext);
         }
 
-        // GET: EmployesController1/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: EmployesController1/Create
+
+        // GET: EmployesController/Creer
+        [HttpGet, AllowAnonymous]
+        [Route("Employes/Creer")]
         public ActionResult Create()
         {
-            return View();
+            EmployesVM vm = new EmployesVM();
+           
+           
+            return View(vm);
         }
 
-        // POST: EmployesController1/Create
-        [HttpPost]
+        // POST: EmployesController/Creer
+        [HttpPost, AllowAnonymous]
+        [Route("Employes/Creer")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(EmployesVM vm)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var password = new PasswordHasher<ApplicationUser>();
+                var userCheck = await _userManager.FindByEmailAsync(vm.Courriel);
+               
+                if (userCheck == null)
+                {
+                    var user = new Employe
+                    {
+
+                        Nom = vm.Nom,
+                        Adresse = vm.Courriel,
+                        UserName = vm.Courriel,
+                        NormalizedUserName = vm.Courriel.ToUpper(),
+                        NormalizedEmail = vm.Courriel.ToUpper(),
+                        Email = vm.Courriel,
+                        EmailConfirmed = true,
+                        PhoneNumberConfirmed = true,
+                        DateEmbauche=vm.DateEmbauche,
+                        PasswordHash = password.HashPassword(userCheck, vm.Password),
+                        
+
+                    };
+                    var result = await _userManager.CreateAsync(user, vm.Password);
+                    if (result.Succeeded)
+                    {
+                        await _userManager.AddToRoleAsync(user, "employe");
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        
+                        user.Adresse = vm.Courriel;
+
+                        user.Nom = vm.Nom;
+                        user.UserName = vm.Courriel;
+                        user.NormalizedUserName = vm.Courriel.ToUpper();
+                        user.NormalizedEmail = vm.Courriel.ToUpper();
+                        user.Email = vm.Courriel;
+                        user.DateEmbauche = vm.DateEmbauche;
+                        user.EmailConfirmed = true;
+                        user.PhoneNumberConfirmed = true;
+                        user.PasswordHash = password.HashPassword(userCheck, vm.Password);
+
+                        return RedirectToAction("Index", "Employes");
+                    }
+
+
+                    else
+                    {
+                        if (result.Errors.Count() > 0)
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                ModelState.AddModelError("message", error.Description);
+                            }
+                        }
+                        return View(vm);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("message", "Cet utilisateur existe déjà.");
+                    return View(vm);
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(vm);
+
         }
 
-        // GET: EmployesController1/Edit/5
-        public ActionResult Edit(int id)
+
+        // GET: Employes/Delete/5
+        [Authorize(Roles = "admin,employe,Employe")]
+        public async Task<IActionResult> Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var Employe = await _context.Employes
+              
+
+                .FirstOrDefaultAsync(m => m.Id == id.ToString());
+            if (Employe == null)
+            {
+                return NotFound();
+            }
+
+            return View(Employe);
         }
 
-        // POST: EmployesController1/Edit/5
-        [HttpPost]
+        // POST: Employes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "administrateur,employe,Employe")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var Employe = await _context.Employes.FindAsync(id);
+            _context.Employes.Remove(Employe);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
-        // GET: EmployesController1/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: EmployesController1/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

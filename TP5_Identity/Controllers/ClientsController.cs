@@ -39,7 +39,8 @@ namespace TP5_Identity.Controllers
         public ActionResult Index()
         {
             var applicationDbContext = _context.Clients
-                  .Include(l => l.Abonnement);
+                  .Include(l => l.Abonnement)
+                  .ToList();
             return View(applicationDbContext);
         }
 
@@ -102,7 +103,7 @@ namespace TP5_Identity.Controllers
                         user.PhoneNumberConfirmed = true;
                         user.PasswordHash = password.HashPassword(userCheck, vm.Password);
 
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Clients");
                     }
 
 
@@ -128,46 +129,39 @@ namespace TP5_Identity.Controllers
 
         }
 
-        // GET: ClientsController/Edit/5
-        public ActionResult Edit(int id)
+
+        // GET: Clients/Delete/5
+        [Authorize(Roles = "admin,employe,client")]
+        public async Task<IActionResult> Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var client = await _context.Clients
+                .Include(c => c.Abonnement)
+                
+                .FirstOrDefaultAsync(m => m.Id == id.ToString());
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return View(client);
         }
 
-        // POST: ClientsController/Edit/5
-        [HttpPost]
+        // POST: Clients/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "administrateur,employe,client")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var client = await _context.Clients.FindAsync(id);
+            _context.Clients.Remove(client);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
-        // GET: ClientsController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ClientsController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

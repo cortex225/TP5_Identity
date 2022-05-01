@@ -1,0 +1,59 @@
+﻿
+@model EmployesVM
+
+
+<h1>Création d'un nouveau Employe</h1>
+
+<hr />
+<div class="row align-items-center">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 jumbotron">
+        <section>
+
+            <form asp-action="Create">
+
+                <h4>Créez-vous un compte Employe</h4>
+                <hr />
+                @*Affichage du résumé des validations*@
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nom" class="control-label"></label>
+                    <input asp-for="Nom" class="form-control" />
+                    <span asp-validation-for="Nom" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NoEmploye" class="control-label"></label>
+                    <input asp-for="NoEmploye" class="form-control" />
+                    <span asp-validation-for="NoEmploye" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Courriel" class="control-label"></label>
+                    <input asp-for="Courriel" class="form-control" />
+                    <span asp-validation-for="Courriel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateEmbauche" class="control-label"></label>
+                    <input asp-for="DateEmbauche" class="form-control" />
+                    <span asp-validation-for="DateEmbauche" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+          
+
+
+                <div class="form-group">
+                    <input type="submit" value="Creer" class="btn btn-primary" />
+                </div>
+            </form>
+
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

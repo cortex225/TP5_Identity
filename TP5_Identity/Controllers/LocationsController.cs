@@ -41,7 +41,8 @@ namespace TP5_Identity.Controllers
                 .Include(l => l.Voitures)
                 .Include(l => l.Voitures.Modele)
                 .Include(l => l.Voitures.Modele.Marque)
-                .Include(l => l.Client);
+                .Include(l => l.Client)
+                .ToList();
             return View(applicationDbContext);
         }
 

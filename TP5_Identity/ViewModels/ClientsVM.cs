@@ -9,6 +9,7 @@ namespace TP5_Identity.Models.ViewModels
         public string Nom { get; set; }
 
         [Required(ErrorMessage = "Le courriel est requis.")]
+        [EmailAddress(ErrorMessage = "Vous devez entrer un courriel valide.")]
         public string Courriel { get; set; }
 
         [Required(ErrorMessage = "Le mot de passe est requis.")]
