@@ -45,10 +45,9 @@ namespace TP5_Identity.Controllers
 
 
         // GET: EmployesController/Creer
-        [HttpGet]
-        [Route("{Controller}/{Action}")]
+        [Route("Employes/Creer")]
         [HttpGet, Authorize(Roles = "admin")]
-        public ActionResult Enregistrer()
+        public ActionResult Create()
         {
             EmployesVM vm = new EmployesVM();
 
@@ -57,9 +56,9 @@ namespace TP5_Identity.Controllers
         }
 
         // POST: EmployesController/Creer
-        [HttpPost]
-        [Route("{Controller}/{Action}")]
-        [HttpGet, Authorize(Roles = "admin")]
+        
+        [Route("Employes/Creer")]
+        [HttpPost, Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(EmployesVM vm)
         {
@@ -76,13 +75,15 @@ namespace TP5_Identity.Controllers
                         Nom = vm.Nom,
                         Adresse = vm.Courriel,
                         UserName = vm.Courriel,
+                        NoEmploye=vm.NoEmploye,
                         NormalizedUserName = vm.Courriel.ToUpper(),
                         NormalizedEmail = vm.Courriel.ToUpper(),
                         Email = vm.Courriel,
                         EmailConfirmed = true,
                         PhoneNumberConfirmed = true,
                         DateEmbauche = vm.DateEmbauche,
-                        PasswordHash = password.HashPassword(userCheck, vm.Password),
+                        PasswordHash = password.HashPassword(userCheck, vm.Password)
+                        
 
 
                     };
