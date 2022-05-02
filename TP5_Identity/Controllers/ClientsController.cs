@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +13,7 @@ namespace TP5_Identity.Controllers
 {
     public class ClientsController : Controller
     {
-       
+
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -51,14 +50,14 @@ namespace TP5_Identity.Controllers
             {
                 return RedirectToAction("Connecter", "Comptes");
             }
-            
+
         }
 
 
 
         // GET: ClientsController/Creer
-        [HttpGet,AllowAnonymous]
-        [Authorize(Roles ="admin,employe")]
+        [HttpGet, AllowAnonymous]
+        [Authorize(Roles = "admin,employe")]
         [Route("Clients/Creer")]
         public ActionResult Create()
         {
@@ -66,18 +65,19 @@ namespace TP5_Identity.Controllers
             vm.Abonnements = _context.Abonnements.ToList();
             //Tout le monte peut créer un nouveau client sauf le client lui même
             bool isRole = User.IsInRole("client");
-            if (isRole==false)
+            if (isRole == false)
 
             {
                 return View(vm);
-                
-                }else
+
+            }
+            else
                 return RedirectToAction("Connecter", "Comptes");
 
         }
 
         // POST: ClientsController/Creer
-        [HttpPost,AllowAnonymous]
+        [HttpPost, AllowAnonymous]
         [Route("Clients/{Creer}")]
         [Authorize(Roles = "admin,employe")]
         [ValidateAntiForgeryToken]
@@ -107,12 +107,11 @@ namespace TP5_Identity.Controllers
 
                     };
                     var result = await _userManager.CreateAsync(user, vm.Password);
-                   
+
 
                     if (result.Succeeded)
                     {
                         await _userManager.AddToRoleAsync(user, "client");
-                        await _signInManager.SignInAsync(user, isPersistent: false);
                         user.AbonnementId = vm.AbonnementId;
                         user.Adresse = vm.Adresse;
                         user.Nom = vm.Nom;
@@ -126,12 +125,12 @@ namespace TP5_Identity.Controllers
                         user.PasswordHash = password.HashPassword(userCheck, vm.Password);
 
 
-                        if (User.IsInRole("admin")||User.IsInRole("employe"))
+                        if (User.IsInRole("admin") || User.IsInRole("employe"))
                         {
                             return RedirectToAction("Index", "Clients");
 
                         }
-                        else 
+                        else
                             return RedirectToAction("Index", "Home");
                     }
 
@@ -170,7 +169,7 @@ namespace TP5_Identity.Controllers
 
             var client = await _context.Clients
                 .Include(c => c.Abonnement)
-                
+
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {

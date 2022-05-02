@@ -17,7 +17,7 @@ namespace TP5_Identity.Models.ViewModels
 
         [DisplayName("Durée en jours")]
         [Required(ErrorMessage = "La durée en jour est requise.")]
-       
+
         public int DureeEnJours { get; set; }
 
         [Required(ErrorMessage = "Vous devez choisir un client.")]

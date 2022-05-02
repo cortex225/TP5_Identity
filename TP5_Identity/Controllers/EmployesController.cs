@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,7 +38,7 @@ namespace TP5_Identity.Controllers
         public ActionResult Index()
         {
             var applicationDbContext = _context.Employes.ToList();
-                  
+
             return View(applicationDbContext);
         }
 
@@ -52,8 +51,8 @@ namespace TP5_Identity.Controllers
         public ActionResult Enregistrer()
         {
             EmployesVM vm = new EmployesVM();
-           
-           
+
+
             return View(vm);
         }
 
@@ -68,7 +67,7 @@ namespace TP5_Identity.Controllers
             {
                 var password = new PasswordHasher<ApplicationUser>();
                 var userCheck = await _userManager.FindByEmailAsync(vm.Courriel);
-               
+
                 if (userCheck == null)
                 {
                     var user = new Employe
@@ -82,17 +81,16 @@ namespace TP5_Identity.Controllers
                         Email = vm.Courriel,
                         EmailConfirmed = true,
                         PhoneNumberConfirmed = true,
-                        DateEmbauche=vm.DateEmbauche,
+                        DateEmbauche = vm.DateEmbauche,
                         PasswordHash = password.HashPassword(userCheck, vm.Password),
-                        
+
 
                     };
                     var result = await _userManager.CreateAsync(user, vm.Password);
                     if (result.Succeeded)
                     {
                         await _userManager.AddToRoleAsync(user, "employe");
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        
+
                         user.Adresse = vm.Courriel;
                         user.Nom = vm.Nom;
                         user.UserName = vm.Courriel;
@@ -141,7 +139,7 @@ namespace TP5_Identity.Controllers
             }
 
             var Employe = await _context.Employes
-              
+
 
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (Employe == null)

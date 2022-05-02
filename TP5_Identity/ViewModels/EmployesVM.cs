@@ -6,7 +6,7 @@ namespace TP5_Identity.Models.ViewModels
 {
     public class EmployesVM
     {
-       
+
 
         [Required(ErrorMessage = "Le nom est requis.")]
         public string Nom { get; set; }
